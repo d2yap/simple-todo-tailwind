@@ -119,7 +119,7 @@ if (localStorage.getItem("todo") != null) {
     let retrievedList = localStorage.getItem("todo");
     let retrievedListArray = JSON.parse(retrievedList);
     //if localstorage is detected but has no length, it will not get the latest id or retrieve list from array since it has no data
-    if(retrievedListArray.length !== 0){
+    if (retrievedListArray.length !== 0) {
         id = retrievedListArray[retrievedListArray.length - 1]["id"];
         list = retrievedListArray;
     }
@@ -165,6 +165,11 @@ submit.addEventListener("click", function () {
     div4.id = id;
     div4.innerText = "Delete";
     div.appendChild(div4);
+
+    //Add delete function event listener to new item
+    document.getElementById('' + id + '').addEventListener("click", function () {
+        deleteTodo('' + id + '');
+    })
 
     toggle(modal);
 });
