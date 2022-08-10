@@ -118,9 +118,13 @@ if (localStorage.getItem("todo") != null) {
     //retrieve list from localstorage if the storage is not null
     let retrievedList = localStorage.getItem("todo");
     let retrievedListArray = JSON.parse(retrievedList);
-    id = retrievedListArray[retrievedListArray.length - 1]["id"];
-    list = retrievedListArray;
+    //if localstorage is detected but has no length, it will not get the latest id or retrieve list from array since it has no data
+    if(retrievedListArray.length !== 0){
+        id = retrievedListArray[retrievedListArray.length - 1]["id"];
+        list = retrievedListArray;
+    }
 };
+
 
 let submit = document.getElementById("submit");
 
