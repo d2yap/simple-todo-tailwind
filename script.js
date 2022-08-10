@@ -133,7 +133,6 @@ submit.addEventListener("click", function () {
     let title = document.getElementById("title").value;
     let content = document.getElementById("content").value;
     let start = document.getElementById("start-todo");
-    console.log("Done");
     let pass = {
         id: id,
         title: title,
@@ -142,7 +141,6 @@ submit.addEventListener("click", function () {
 
     list.push(pass);
     localStorage.setItem("todo", JSON.stringify(list));
-    console.log(list);
 
     let div = document.createElement("div");
     var div2 = document.createElement("div");
@@ -165,6 +163,9 @@ submit.addEventListener("click", function () {
     div4.id = id;
     div4.innerText = "Delete";
     div.appendChild(div4);
+
+    document.getElementById("title").value = "";
+    document.getElementById("content").value = "";
 
     //Add delete function event listener to new item
     document.getElementById('' + id + '').addEventListener("click", function () {
