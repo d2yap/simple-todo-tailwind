@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="main.css" rel="stylesheet">
+  <script type="text/javascript" src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Modal -->
+  <div id="modal" class="fixed mx-auto w-screen h-screen z-20 bg-gray-100/[.8]">
+    <div id="modal-clickable" class="flex h-screen justify-center items-center">
+      <div id="modal-content" class="h-96 w-[23rem] bg-slate-50 p-10 rounded-md drop-shadow-xl">
+        <button id="close-button" class="fixed border-red-500 border-4 w-12 h-12 bg-red-200 left-[22rem] bottom-[22rem] text-red-500 rounded-full shadow-lg hover:text-white hover:bg-red-500 text-xl">X</button>
+        <!-- Input fields -->
+          <h1 class="text-3xl">Input a list item.</h1>
+          <label for="" class="font-light text-xl">Title</label><br>
+          <input id="title" type="text" placeholder="Title" class="w-[18rem] rounded-md drop-shadow-md mb-1 p-1"><br>
+          <label for="" class="font-light text-xl">Content</label><br>
+          <textarea id="content" type="text" placeholder="Content" style="resize:none;" class="w-[18rem] h-32 rounded-md drop-shadow-md mb-1 p-1"></textarea>
+          <br>
+          <button id="submit" class="relative left-[15rem] top-2 border-2 border-dashed border-gray-400 hover:border-solid hover:border-violet-500 hover:border-2 p-2 rounded-full mt-1">Submit</button>
+      </div>
+      
+    </div>
+    </div>
+    
+  </div>
+  <nav class="bg-gray-800">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="relative flex items-center justify-between h-16">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button id="mobile-menu-button" type="button"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <!--
+                  Icon when menu is closed.
+      
+                  Heroicon name: outline/menu
+      
+                  Menu open: "hidden", Menu closed: "block"
+                -->
+            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="2" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <!--
+                  Icon when menu is open.
+      
+                  Heroicon name: outline/x
+      
+                  Menu open: "block", Menu closed: "hidden"
+                -->
+            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="2" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex-shrink-0 flex items-center">
+            <p class="text-4xl italic text-white">Todo</p>
+          </div>
+          <div class="hidden sm:block sm:ml-6">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                aria-current="page">Dashboard</a>
+
+              <a href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Export</a>
+
+              <a href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Import</a>
+
+              <a href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <button id="add-button" type="button" class="bg-purple-600 rounded-md px-6 py-2 text-white font-bold">+ Add</button>
+          <span class="sr-only">Add</span>
+          <!-- Heroicon name: outline/bell -->
+          <!-- Profile dropdown -->
+          <div class="ml-3 relative">
+            <div>
+              <button type="button"
+                class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="sr-only">Open user menu</span>
+                <img class="h-8 w-8 rounded-full"
+                  src="GitHub-Mark-Light-32px.png"
+                  alt="">
+              </button>
+            </div>
+
+            <!--
+                  Dropdown menu, show/hide based on menu state.
+      
+                  Entering: "transition ease-out duration-100"
+                    From: "transform opacity-0 scale-95"
+                    To: "transform opacity-100 scale-100"
+                  Leaving: "transition ease-in duration-75"
+                    From: "transform opacity-100 scale-100"
+                    To: "transform opacity-0 scale-95"
+                -->
+            <div
+              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none opacity-0"
+              role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="dropdown">
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <a href="https://github.com/d2yap" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                id="user-menu-item-0">My github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+          aria-current="page">Dashboard</a>
+
+        <a href="#"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Export</a>
+
+        <a href="#"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Import</a>
+
+        <a href="#"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+      </div>
+    </div>
+  </nav>
+  <div id="start-todo" class="container mx-auto grid lg:grid-cols-5 my-10 gap-4 md:grid-cols-2">
+    <!-- Start of to-dos -->
+    <div id="new-todo" class="bg-gray-100 p-10 h-96 border-dashed border-gray-400 rounded-md border-4 text-center transition ease-in delay-100 hover:scale-110 hover:bg-gray-500 hover:text-white hover:border-slate-50 duration-300 hover:drop-shadow-xl hover:z-10 cursor-pointer">What would you like to
+      do?<br>Add a new "to-do" list item here!</div>
+
+    <!-- <div class="bg-slate-50 h-96 rounded-md drop-shadow-xl ">
+      <div class="bg-violet-400 rounded-tl-md rounded-tr-md p-4 text-size-10 text-2xl inset-x-0 top-0 font-bold">Learning!!!!!!!!!</div>
+      <div class="p-2">To do content</div>
+      <div class="absolute bottom-0 right-0 rounded-br-md rounded-bl-md inset-x-0 h-8 bg-red-100 hover:bg-red-400 hover:text-white text-center ">Delete</div>
+    </div>
+  </div> -->
+
+  
+
+</body>
+
+</html>
